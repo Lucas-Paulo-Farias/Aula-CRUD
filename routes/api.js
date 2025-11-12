@@ -22,5 +22,14 @@ router.post('/', (req, res) => {
     )
 })
 
+//2ª rota = Consultar usuário
+router.get('/', (req, res) => {
+    db.query('SELECT nome, email FROM users',
+        (err, result) => {
+            if (err) return res.status(500).send(err)
+            res.json(result)
+        }
+    )
+})
 //Exportar as rotas
 module.exports = router
